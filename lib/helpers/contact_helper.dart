@@ -44,6 +44,45 @@ class ContactHelper {
     return contact;
   }
 
+  Future<Contact?> getContact(int id) async {
+    Database dbContact = await db;
+    List<Map<String, dynamic>> maps = await dbContact.query(contactTable,
+    columns: [idColumn, nameColumn, emailColumn, phoneColumn, imgColumn],
+    where: "$idColumn = ?",
+    whereArgs: [id]);
+    if(maps.isNotEmpty){
+      return Contact.fromMap(maps.first);
+    } else {
+      return null;
+    }
+  }
+
+  Future<int> deleteContact(int id) async {
+    Database dbContact = await db;
+    return await dbContact.delete(contactTable,
+        where: "$idColumn = ?",
+        whereArgs: [id]);
+  }
+
+  Future<int> updateContact (Contact contact) async {
+    Database dbContact = await db;
+    return await dbContact.update(contactTable,
+        contact.toMap(),
+        where: "$idColumn = ?",
+        whereArgs: [contact.id]
+    );
+  }
+
+  Future<List<Contact>> getAllContacts() async {
+    Database dbContact = await db;
+    List<Map> listMap = await dbContact.rawQuery("SELECT * FROM $contactTable");
+    List<Contact> listContact = [];
+    for(Map m in listMap){
+      listContact.add(Contact.fromMap(m as Map<String, dynamic>));
+    }
+    return listContact;
+  }
+
 }
 
 class Contact {
