@@ -5,8 +5,8 @@ import 'package:flutter/material.dart';
 import 'helpers/contact_helper.dart';
 
 void main() {
-  runApp(MaterialApp(
-    home: ContactPage(contact: Contact.empty()),
+  runApp(const MaterialApp(
+    home: HomePage(),
     debugShowCheckedModeBanner: false,
   ));
 }
