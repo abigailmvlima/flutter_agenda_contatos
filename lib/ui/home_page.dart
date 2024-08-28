@@ -71,6 +71,7 @@ class _HomePageState extends State<HomePage> {
                 ),
                 Padding(padding: const EdgeInsets.only(left: 10.0),
                   child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(contacts[index].name ?? "",
                         style: const TextStyle(

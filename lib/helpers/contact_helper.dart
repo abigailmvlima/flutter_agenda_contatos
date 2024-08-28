@@ -102,7 +102,6 @@ class Contact {
    String phone;
    String img;
 
-
    Contact({
      this.id,
      required this.name,
@@ -111,7 +110,8 @@ class Contact {
      required this.img,
    });
 
-   Contact.fromMap(Map<String, dynamic> map)
+
+  Contact.fromMap(Map<String, dynamic> map)
        : id = map[idColumn],
          name = map[nameColumn] ?? '',
          email = map[emailColumn] ?? '',
@@ -136,4 +136,13 @@ class Contact {
    String toString() {
      return "Contact(id: $id, name: $name, email: $email, phone: $phone, img: $img)";
    }
+
+  static Contact empty() {
+    return Contact(
+      name: '',
+      email: '',
+      phone: '',
+      img: '',
+    );
+  }
 }
