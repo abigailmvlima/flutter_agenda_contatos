@@ -1,12 +1,12 @@
 import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 
-final String contactTable = "contactTable";
-final String idColumn = "idColumn";
-final String nameColumn = "nameColumn";
-final String emailColumn = "emailColumn";
-final String phoneColumn = "phoneColumn";
-final String imgColumn = "imgColumn";
+const String contactTable = "contactTable";
+const String idColumn = "idColumn";
+const String nameColumn = "nameColumn";
+const String emailColumn = "emailColumn";
+const String phoneColumn = "phoneColumn";
+const String imgColumn = "imgColumn";
 
 class ContactHelper {
   static final ContactHelper _instance = ContactHelper.internal();
@@ -28,7 +28,7 @@ class ContactHelper {
 
   Future<Database> initDb() async {
     final databasesPath = await getDatabasesPath();
-    final path = join(databasesPath, "contacts.db");
+    final path = join(databasesPath, "contactsnew.db");
     
     return await openDatabase(path, version: 1, onCreate: (Database db, int newerVersion) async {
       await db.execute(
@@ -102,6 +102,7 @@ class Contact {
    String phone;
    String img;
 
+
    Contact({
      this.id,
      required this.name,
@@ -129,6 +130,7 @@ class Contact {
      }
      return map;
    }
+
 
    @override
    String toString() {
