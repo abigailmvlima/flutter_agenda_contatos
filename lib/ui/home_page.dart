@@ -34,7 +34,7 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: Colors.white,
       floatingActionButton: FloatingActionButton(
         onPressed: (){
-          _showContactPage();
+          //_showContactPage();
         },
         backgroundColor: Colors.red,
         child: const Icon(Icons.add),
