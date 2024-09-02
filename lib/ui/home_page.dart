@@ -27,14 +27,14 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Contatos"),
+        title: const Text("Lista de Contatos"),
         backgroundColor: Colors.red,
         centerTitle: true,
       ),
       backgroundColor: Colors.white,
       floatingActionButton: FloatingActionButton(
         onPressed: (){
-          //_showContactPage();
+          _showContactPage();
         },
         backgroundColor: Colors.red,
         child: const Icon(Icons.add),
@@ -62,9 +62,9 @@ class _HomePageState extends State<HomePage> {
                   decoration: BoxDecoration(
                     shape: BoxShape.circle,
                     image: DecorationImage(
-                        image: contacts[index].img != null ?
-                            FileImage(File(contacts[index].img)) :
-                             const AssetImage("images/person.png")
+                        image: (contacts[index].img != null && contacts[index].img.isNotEmpty)
+                            ? FileImage(File(contacts[index].img))
+                            : const AssetImage("assets/images/person.png"),
                     ),
                   ),
                 ),

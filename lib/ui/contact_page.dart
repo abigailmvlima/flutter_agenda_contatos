@@ -85,7 +85,7 @@ class _ContactPageState extends State<ContactPage> {
                       image: DecorationImage(
                         image: (_editedContact.img.isNotEmpty)
                             ? FileImage(File(_editedContact.img))
-                            : const AssetImage("images/person.png"),
+                            : const AssetImage("assets/images/person.png"),
                         fit: BoxFit.cover,
                       ),
                     ),
