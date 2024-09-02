@@ -60,18 +60,18 @@ class _ContactPageState extends State<ContactPage> {
             ),
           ),
 
-          // floatingActionButton: FloatingActionButton(
-          //   onPressed: () {
-          //     // if(_editedContact.name != null && _editedContact.name.isNotEmpty){
-          //     //   Navigator.pop(context, _editedContact);
-          //     // } else {
-          //     //   FocusScope.of(context).requestFocus(_nameFocus);
-          //     // }
-          //     // Ação do botão salvar aqui
-          //   },
-          //   backgroundColor: Colors.red,
-          //   child: const Icon(Icons.save),
-          // ),
+          floatingActionButton: FloatingActionButton(
+            onPressed: () {
+              if(_editedContact.name != null && _editedContact.name.isNotEmpty){
+                Navigator.pop(context, _editedContact);
+              } else {
+                FocusScope.of(context).requestFocus(_nameFocus);
+              }
+              //Ação do botão salvar aqui
+            },
+            backgroundColor: Colors.red,
+            child: const Icon(Icons.save),
+          ),
           body: SingleChildScrollView(
             padding: const EdgeInsets.all(10.0),
             child: Column(
