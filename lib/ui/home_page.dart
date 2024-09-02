@@ -91,8 +91,64 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       onTap: () {
-        _showContactPage(contact: contacts[index]);
+        _showOptions(context, index);
       },
+    );
+  }
+  
+  void _showOptions(BuildContext context, int index){
+    showModalBottomSheet(
+        context: context,
+        builder: (context){
+          return BottomSheet(
+              onClosing: (){},
+              builder: (context) {
+                return Container(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                    Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child:   TextButton(
+                        child: const Text("Ligar",
+                          style: TextStyle(color: Colors.red, fontSize: 20.0),
+                        ),
+                        onPressed: (){},
+                      ),
+                    ),
+                      Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child:   TextButton(
+                          child: const Text("Editar",
+                            style: TextStyle(color: Colors.red, fontSize: 20.0),
+                          ),
+                          onPressed: (){
+                            Navigator.pop(context);
+                            _showContactPage(contact: contacts[index]);
+                          },
+                        ),
+                      ),Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child:   TextButton(
+                          child: const Text("Excluir",
+                            style: TextStyle(color: Colors.red, fontSize: 20.0),
+                          ),
+                          onPressed: (){
+                            helper.deleteContact(contacts[index].id);
+                            setState(() {
+                              contacts.removeAt(index);
+                              Navigator.pop(context);
+                            });
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              }
+          );
+        }
     );
   }
 
