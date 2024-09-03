@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:agenda_contatos/helpers/contact_helper.dart';
 import 'package:flutter/material.dart';
+import 'package:img_picker/img_picker.dart';
 
 class ContactPage extends StatefulWidget {
   const ContactPage({super.key, required this.contact});
@@ -91,8 +92,8 @@ class _ContactPageState extends State<ContactPage> {
                     ),
                   ),
                   onTap: () {
-                    // Ação ao tocar na imagem
-                  },
+                    _showPicker(context);
+                  }, // Ação ao tocar na imagem
                 ),
                 TextField(
                   controller: _nameController,
@@ -132,6 +133,46 @@ class _ContactPageState extends State<ContactPage> {
     );
   }
 
+
+  void _showPicker(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      builder: (BuildContext context) {
+        return SafeArea(
+          child: Wrap(
+            children: <Widget>[
+              ListTile(
+                leading: const Icon(Icons.photo_library),
+                title: const Text('Galeria'),
+                onTap: () async {
+                  final file = await ImagePicker().pickImage(source: ImageSource.gallery);
+                  if (file != null) {
+                    setState(() {
+                      _editedContact.img = file.path;
+                    });
+                  }
+                  Navigator.of(context).pop();
+                },
+              ),
+              ListTile(
+                leading: const Icon(Icons.photo_camera),
+                title: const Text('Câmera'),
+                onTap: () async {
+                  final file = await ImagePicker().pickImage(source: ImageSource.camera);
+                  if (file != null) {
+                    setState(() {
+                      _editedContact.img = file.path;
+                    });
+                  }
+                  Navigator.of(context).pop();
+                },
+              ),
+            ],
+          ),
+        );
+      },
+    );
+  }
 
   void _requestPop(bool didPop, dynamic result) async {
     if (_userEdited) {
