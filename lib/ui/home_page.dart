@@ -30,9 +30,15 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Lista de Contatos"),
+        title: const Text("Lista de Contatos",
+        style: TextStyle(color: Colors.white
+        ),
+        ),
         backgroundColor: Colors.red,
         centerTitle: true,
+        iconTheme: const IconThemeData(
+          color: Colors.white, // Defina a cor que você deseja para os três pontinhos
+        ),
         actions: [
           PopupMenuButton<OrderOptions>(
           itemBuilder: (context) => <PopupMenuEntry<OrderOptions>>[
@@ -56,6 +62,7 @@ class _HomePageState extends State<HomePage> {
           _showContactPage();
         },
         backgroundColor: Colors.red,
+        foregroundColor: Colors.white, // Cor do ícone "plus" (ícone de adição)
         child: const Icon(Icons.add),
       ),
       body: ListView.builder(

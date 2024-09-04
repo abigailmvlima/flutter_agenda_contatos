@@ -51,7 +51,8 @@ class _ContactPageState extends State<ContactPage> {
         child: Scaffold(
           appBar: AppBar(
             backgroundColor: Colors.red,
-            title: Text(_editedContact.name.isNotEmpty ? _editedContact.name : "Novo Contato"),
+            title: Text(_editedContact.name.isNotEmpty ? _editedContact.name : "Novo Contato",
+            style: const TextStyle(color: Colors.white),),
             centerTitle: true,
             leading: IconButton( // Botão de voltar personalizado
               icon: const Icon(Icons.arrow_back),
@@ -71,6 +72,7 @@ class _ContactPageState extends State<ContactPage> {
               //Ação do botão salvar aqui
             },
             backgroundColor: Colors.red,
+            foregroundColor: Colors.white, // Cor do ícone "salvar" (ícone de adição)
             child: const Icon(Icons.save),
           ),
           body: SingleChildScrollView(
